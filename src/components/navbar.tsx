@@ -1,6 +1,6 @@
 import * as React from "react"
 import Link from "next/link"
-import { UserButton } from "@clerk/nextjs"
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
 import {
   Menubar,
   MenubarContent,
@@ -31,7 +31,12 @@ function Navbar() {
         </Menubar>
         <div>BMO SaaS Starter</div>
       </div>
-      <UserButton />
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
+      <SignedOut>
+        <Link href="/sign-in">Sign in</Link>
+      </SignedOut>
     </nav>
   )
 }

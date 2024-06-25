@@ -1,4 +1,3 @@
-import { auth } from "@clerk/nextjs/server";
 import { neon } from "@neondatabase/serverless";
 
 // Initialize the neon client with the DATABASE_URL
