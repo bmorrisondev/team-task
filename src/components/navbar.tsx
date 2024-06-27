@@ -1,6 +1,6 @@
 import * as React from "react"
 import Link from "next/link"
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
+import { OrganizationSwitcher, SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
 import {
   Menubar,
   MenubarContent,
@@ -9,13 +9,24 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar"
 import { MenuIcon } from "lucide-react"
-
+import { metadata } from "@/app/layout"
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet"
+import { FiArrowRight, FiArrowRightCircle, FiBook, FiCalendar, FiHome } from "react-icons/fi"
+import ListsList from "./ListsList"
 
 function Navbar() {
   return (
-    <nav className="flex p-2 justify-between items-center">
+    <nav className="flex p-2 justify-between items-center bg-slate-100 border-b border-slate-200">
       <div className="flex items-center gap-2">
-        <Menubar className="bg-transparent border-0">
+        <Sheet>
+          <SheetTrigger className='lg:hidden'>
+            <MenuIcon size={24} />
+          </SheetTrigger>
+          <SheetContent side='left'>
+            <ListsList />
+          </SheetContent>
+        </Sheet>
+        {/* <Menubar className="bg-transparent border-0">
           <MenubarMenu>
             <MenubarTrigger>
               <MenuIcon size={24} />
@@ -28,8 +39,8 @@ function Navbar() {
               </MenubarItem>
             </MenubarContent>
           </MenubarMenu>
-        </Menubar>
-        <div>BMO SaaS Starter</div>
+        </Menubar> */}
+        <div>{ metadata.title as string }</div>
       </div>
       <SignedIn>
         <UserButton />
